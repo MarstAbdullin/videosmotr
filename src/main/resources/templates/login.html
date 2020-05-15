@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
+    <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div class="login-dark">
+        <form method="post">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group"><input class="form-control form-control-lg" type="email" name="email" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control form-control-lg" type="password" name="password" placeholder="Password"></div>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
+            <small class="form-text" style="width: 161px;margin: 0px;font-size: 18px;height: 32px;color: #ffffff;">&nbsp;Remember me<input class="float-right" type="checkbox" name="remember me" style="width: 21px;font-size: 13px;font-weight: normal;height: 21px;margin: 0x;filter: blur(0px) brightness(96%) contrast(125%) grayscale(0%) hue-rotate(191deg) saturate(100%) sepia(33%);background-color: #214a80;padding: 0px;color: rgb(152,26,26);min-height: 32px;max-height: 21px;" value="Remember me"></small>
+        </form>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
