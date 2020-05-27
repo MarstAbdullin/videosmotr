@@ -47,7 +47,8 @@ public class LocalizationConfig implements WebMvcConfigurer {
         bean.setValidationMessageSource(messageSource());
         return bean;
     }
-    // откуда читать ключи с языками
+
+    // говорим, где находятся наши файлы с локализацией
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();

@@ -19,6 +19,9 @@ public class Video {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String videoName;
+    private String videoPath;
+    private String description;
+    private String previewPath;
 
     @ManyToMany
     @JoinTable(name = "video_to_category",

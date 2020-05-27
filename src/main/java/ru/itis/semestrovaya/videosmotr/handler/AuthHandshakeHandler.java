@@ -33,7 +33,7 @@ public class AuthHandshakeHandler implements HandshakeInterceptor {
             serverHttpResponse.setStatusCode(HttpStatus.FORBIDDEN);
             return false;
         }
-        Optional<UserDto> optionalUser = userService.getUserByEmail(email);
+        Optional<UserDto> optionalUser = userService.getUserDtoByEmail(email);
         if (optionalUser.isPresent()) {
             map.put("user", optionalUser.get());
             return true;

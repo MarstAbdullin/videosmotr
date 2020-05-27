@@ -1,10 +1,13 @@
 package ru.itis.semestrovaya.videosmotr.repositories;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.itis.semestrovaya.videosmotr.models.User;
+import ru.itis.semestrovaya.videosmotr.models.Video;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
@@ -33,18 +36,28 @@ public class UserRepositoryJpaImpl implements UserRepository {
     @Override
     @Transactional(readOnly = true)
     public Optional<User> findById(Long id) {
-        return Optional.ofNullable(entityManager
-                .find(User.class, id));
+        try {
+            return Optional.ofNullable(entityManager
+                    .find(User.class, id));
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<User> findByName(String name) {
-        User user = entityManager
-                .createQuery("select user from User user where user.email = :name", User.class)
-                .setParameter("name", name)
-                .getSingleResult();
-        return Optional.ofNullable(user);
+        try {
+            User user = entityManager
+                    .createQuery("select user from User user where user.email = :name", User.class)
+                    .setParameter("name", name)
+                    .getSingleResult();
+            return Optional.ofNullable(user);
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        } catch (NoResultException noResultException) {
+            return Optional.empty();
+        }
     }
 
     @Override

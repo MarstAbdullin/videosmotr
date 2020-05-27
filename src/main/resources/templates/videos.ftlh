@@ -12,7 +12,7 @@
             <td><a href="/video/${video.id}" target="_blank"><img src="${video.previewPath}" alt="Preview"></a></td>
             <td><a href="/video/${video.id}">${video.description}</a></td>
         </tr>
-    </#list>
+        </#list>
 </div>
 </body>
 </html>

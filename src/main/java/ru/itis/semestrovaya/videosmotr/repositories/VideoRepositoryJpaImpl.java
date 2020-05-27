@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import ru.itis.semestrovaya.videosmotr.models.User;
+import ru.itis.semestrovaya.videosmotr.models.UserInfo;
 import ru.itis.semestrovaya.videosmotr.models.Video;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -71,5 +74,19 @@ public class VideoRepositoryJpaImpl implements VideoRepository {
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
+    }
+
+    @Override
+    public Optional<List<Video>> getAllVideos() {
+        return Optional.ofNullable(entityManager
+                .createQuery("select v from Video v", Video.class)
+                .getResultList());
+    }
+
+    @Override
+    public Optional<List<Video>> getUserAllVideos(String username) {
+        return Optional.ofNullable(entityManager
+                .createQuery("select u from UserInfo u where UserInfo.username = :username", UserInfo.class)
+                .getSingleResult().getVideos());
     }
 }
